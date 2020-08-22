@@ -45,7 +45,7 @@ class Mongo:
         db_collection = self.__database[collection]
         db_collection.update(query, {'$push': obj})
 
-    def delete_chat(self, collection, query):
+    def delete_one(self, collection, query):
         db_collection = self.__database[collection]
         db_collection.delete_one(query)
 

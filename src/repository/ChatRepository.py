@@ -34,7 +34,7 @@ class ChatRepository:
         )["messages"]
 
     def delete_chat(self, room_id: str):
-        self.__mongo.delete_chat(
+        self.__mongo.delete_one(
             collection=self.__chat,
             query={
                 "roomId": room_id
