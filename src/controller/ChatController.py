@@ -115,3 +115,20 @@ class ChatController:
             response = UtilController.build_error_payback(exception, status_code)
 
         return UtilController.build_response(response, status_code)
+
+    @staticmethod
+    @cross_origin()
+    @chat_controller.route('/chat/<string:room_id>', methods=['POST'])
+    def create_chat(room_id: str):
+        response: dict = {}
+        status_code: int = 200
+        try:
+            Logger.info(f"create_chat: room_id={room_id}")
+            service.create_chat(
+                room_id=room_id
+            )
+        except Exception as exception:
+            status_code = 500
+            response = UtilController.build_error_payback(exception, status_code)
+
+        return UtilController.build_response(response, status_code)

@@ -34,7 +34,8 @@
 		"type": "string"
 	}
 ]
-```	
+```
+
 - POST /chat/{roomId}/{userId} - envia mensagem
 
 **Request**	
@@ -72,6 +73,13 @@
 200
 
 - DELETE /chat/{roomId}/ - apaga a sala
+
+**Request**	
+
+**Response**
+200
+
+- POST /chat/{roomId} - Cria sala
 
 **Request**	
 

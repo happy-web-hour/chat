@@ -1,6 +1,4 @@
 import os
-import uuid
-from datetime import datetime
 
 from src.library.database.Mongo import Mongo
 
@@ -26,12 +24,13 @@ class ChatRepository:
         )
 
     def get_all_messages(self, room_id: str):
-        return self.__mongo.find_by(
+        arr =  self.__mongo.find_by(
             collection=self.__chat,
             query={
                 "roomId": room_id
             }
-        )["messages"]
+        )
+        return arr["messages"]
 
     def delete_chat(self, room_id: str):
         self.__mongo.delete_one(
@@ -39,4 +38,10 @@ class ChatRepository:
             query={
                 "roomId": room_id
             }
+        )
+
+    def create_chat(self, chat: dict):
+        self.__mongo.insert_one(
+            collection=self.__chat,
+            elem=chat
         )

@@ -69,3 +69,12 @@ class ChatService:
         return self.__repository.delete_chat(
             room_id=room_id
         )
+
+    def create_chat(self, room_id: str):
+        chat = {
+            "roomId": room_id,
+            "messages": []
+        }
+        return self.__repository.create_chat(
+            chat=chat
+        )
