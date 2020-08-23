@@ -10,7 +10,6 @@ chat_controller = Blueprint('ChatController', __name__)
 
 class ChatController:
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>/<string:user_id>', methods=['POST'])
     def post_message(room_id: str, user_id: str):
         response: dict = {}
@@ -29,7 +28,6 @@ class ChatController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>', methods=['GET'])
     def get_all_messages(room_id: str):
         response: dict
@@ -46,7 +44,6 @@ class ChatController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>/<string:message_id>', methods=['GET'])
     def get_messages_after(room_id: str, message_id: str):
         response: dict
@@ -64,7 +61,6 @@ class ChatController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>/<string:user_id>', methods=['PATCH'])
     def add_user(room_id: str, user_id: str):
         response: dict = {}
@@ -82,7 +78,6 @@ class ChatController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>/<string:user_id>', methods=['DELETE'])
     def delete_user(room_id: str, user_id: str):
         response: dict = {}
@@ -100,7 +95,6 @@ class ChatController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>', methods=['DELETE'])
     def delete_chat(room_id: str):
         response: dict = {}
@@ -117,7 +111,6 @@ class ChatController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @chat_controller.route('/chat/<string:room_id>', methods=['POST'])
     def create_chat(room_id: str):
         response: dict = {}
